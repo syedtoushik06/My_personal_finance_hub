@@ -544,9 +544,10 @@
         import { getFirestore, doc, setDoc, onSnapshot, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
         // ============================================
-        // YOUR FIREBASE CONFIG
+        // YOUR CORRECTED FIREBASE CONFIG
+        // The typo (0 vs O) in apiKey is fixed below:
         const firebaseConfig = {
-            apiKey: "AIzaSyCi2k0RGi00SYIIzjboE8GrzSwVGa1AiJo",
+            apiKey: "AIzaSyCi2k0RGi0OSYIIzjboE8GrzSwVGa1AiJo",
             authDomain: "student-finance-b137d.firebaseapp.com",
             projectId: "student-finance-b137d",
             storageBucket: "student-finance-b137d.firebasestorage.app",
@@ -627,7 +628,7 @@
         };
 
         window.addBorrowLend = () => {
-            const date = document.getElementById('borrowDate').value || new Date().toISOString().split('T')[0];
+            const date = document.getElementById('borrowDate')?.value || new Date().toISOString().split('T')[0];
             const type = document.getElementById('borrowLendType').value;
             const person = document.getElementById('personName').value.trim();
             const amount = parseFloat(document.getElementById('borrowLendAmount').value);
