@@ -7,7 +7,11 @@
     <title>Cloud Finance Hub</title>
     <style>
         /* --- RESET & BASIC STYLES --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -30,133 +34,369 @@
 
         /* --- LOGIN SCREEN --- */
         #loginOverlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            z-index: 1000; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; color: white;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
         }
 
         .login-box {
-            background: white; padding: 40px; border-radius: 20px;
-            text-align: center; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            color: #333; width: 90%; max-width: 400px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            color: #333;
+            width: 90%;
+            max-width: 400px;
         }
 
         .btn-google {
-            background: #4285F4; color: white; border: none; padding: 15px 30px;
-            font-size: 16px; border-radius: 50px; cursor: pointer; font-weight: bold;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            width: 100%; transition: transform 0.2s;
+            background: #4285F4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: transform 0.2s;
         }
-        .btn-google:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4); }
+
+        .btn-google:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+        }
 
         /* --- APP STYLES --- */
-        h1 { color: #667eea; text-align: center; margin-bottom: 30px; font-size: 2.2em; text-transform: uppercase; letter-spacing: 1px; }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
         .user-info {
-            position: absolute; top: 20px; right: 20px; font-size: 12px;
-            text-align: right; display: flex; flex-direction: column; align-items: flex-end;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 12px;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
         }
 
         .btn-logout {
-            background: #ff7675; color: white; border: none; padding: 5px 10px;
-            border-radius: 5px; cursor: pointer; margin-top: 5px; font-size: 11px;
+            background: #ff7675;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 5px;
+            font-size: 11px;
         }
 
         .nav-buttons {
-            text-align: center; margin-bottom: 30px; display: flex;
-            justify-content: center; gap: 10px; flex-wrap: wrap;
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .nav-btn {
-            padding: 10px 20px; color: white; border: none; border-radius: 50px;
-            cursor: pointer; font-weight: bold; font-size: 14px;
-            transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .nav-btn:hover { transform: translateY(-2px); }
-        .nav-btn.home { background: linear-gradient(to right, #667eea, #764ba2); }
-        .nav-btn.history { background: linear-gradient(to right, #11998e, #38ef7d); }
-        .nav-btn.borrow { background: linear-gradient(to right, #ff9966, #ff5e62); }
-        .nav-btn.wishlist { background: linear-gradient(to right, #8e44ad, #9b59b6); }
-        /* New Event Button Style */
-        .nav-btn.events { background: linear-gradient(to right, #e17055, #fab1a0); }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.home {
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+
+        .nav-btn.history {
+            background: linear-gradient(to right, #11998e, #38ef7d);
+        }
+
+        .nav-btn.borrow {
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+        }
+
+        .nav-btn.wishlist {
+            background: linear-gradient(to right, #8e44ad, #9b59b6);
+        }
+
+        .nav-btn.events {
+            background: linear-gradient(to right, #e17055, #fab1a0);
+        }
 
         .budget-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 30px; border-radius: 15px; margin-bottom: 30px;
-            color: white; text-align: center; box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
         }
 
         .budget-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px; align-items: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            align-items: center;
         }
 
-        .budget-item p { font-size: 48px; font-weight: bold; }
-        .remaining.negative { color: #ffcccc !important; text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+        .budget-item p {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .remaining.negative {
+            color: #ffcccc !important;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
 
         .debt-alert-box {
-            background: rgba(0, 0, 0, 0.2); border-radius: 12px; padding: 15px;
-            border: 2px solid rgba(255, 100, 100, 0.5); animation: pulse 2s infinite;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            border: 2px solid rgba(255, 100, 100, 0.5);
+            animation: pulse 2s infinite;
         }
-        .debt-text { color: #ffcccc; font-size: 32px !important; }
+
+        .debt-text {
+            color: #ffcccc;
+            font-size: 32px !important;
+        }
+
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 100, 100, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 100, 100, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 100, 100, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 100, 100, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 100, 100, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 100, 100, 0);
+            }
         }
 
         .expense-form {
-            background: #f8f9fa; padding: 25px; border-radius: 15px;
-            margin-bottom: 25px; border: 1px solid #eef2f7;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #eef2f7;
         }
 
-        .form-group { margin-bottom: 15px; }
-        .form-group input, .form-group select {
-            width: 100%; padding: 14px; border: 2px solid #e0e0e0;
-            border-radius: 10px; font-size: 16px;
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
         }
 
         .add-btn {
-            width: 100%; padding: 15px; background: #667eea; color: white;
-            border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer;
+            width: 100%;
+            padding: 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        .expenses-list { margin-top: 30px; }
+        .expenses-list {
+            margin-top: 30px;
+        }
+
         .expense-item {
-            background: white; border: 1px solid #eef2f7; padding: 15px 20px;
-            border-radius: 12px; margin-bottom: 12px; display: flex;
-            justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            background: white;
+            border: 1px solid #eef2f7;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
-        .expense-amount { font-size: 18px; font-weight: bold; margin: 0 20px; min-width: 80px; text-align: right; }
-        .btn-small { padding: 8px 12px; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; }
-        .btn-delete { background: #ff7675; }
-        .btn-action { background: #00b894; }
+        .expense-amount {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 20px;
+            min-width: 80px;
+            text-align: right;
+        }
 
-        /* Wishlist & Events Grid */
-        .wishlist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+        .btn-small {
+            padding: 8px 12px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-delete {
+            background: #ff7675;
+        }
+
+        .btn-action {
+            background: #00b894;
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
         .wishlist-card {
-            background: white; border-radius: 15px; overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 1px solid #eee;
-            display: flex; flex-direction: column;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
         }
-        .wishlist-img-box { width: 100%; height: 150px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; }
-        .wishlist-img-box img { width: 100%; height: 100%; object-fit: cover; }
-        .wishlist-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
-        .btn-buy { flex: 1; background: #8e44ad; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; }
-        .purchased-badge { background: #00b894; color: white; padding: 5px; text-align: center; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
-        .card-purchased { opacity: 0.7; filter: grayscale(100%); }
 
-        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; margin-left: 8px; }
-        .badge-borrowed { background: #ffeaa7; color: #d35400; }
-        .badge-lent { background: #74b9ff; color: #0984e3; }
-        .badge-paid { background: #55efc4; color: #00b894; }
+        .wishlist-img-box {
+            width: 100%;
+            height: 150px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        .summary-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .summary-card { padding: 20px; border-radius: 15px; color: white; text-align: center; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); }
-        .card-borrowed { background: linear-gradient(135deg, #ff7675 0%, #d63031 100%); }
-        .card-lent { background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); }
+        .wishlist-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .wishlist-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btn-buy {
+            flex: 1;
+            background: #8e44ad;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .purchased-badge {
+            background: #00b894;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .card-purchased {
+            opacity: 0.7;
+            filter: grayscale(100%);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        .badge-borrowed {
+            background: #ffeaa7;
+            color: #d35400;
+        }
+
+        .badge-lent {
+            background: #74b9ff;
+            color: #0984e3;
+        }
+
+        .badge-paid {
+            background: #55efc4;
+            color: #00b894;
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .summary-card {
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-borrowed {
+            background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+        }
+
+        .card-lent {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+        }
     </style>
 </head>
 
@@ -168,7 +408,8 @@
             <p style="margin-bottom: 30px; color: #666;">Sign in to sync your data across devices.</p>
             <button class="btn-google" onclick="googleLogin()">
                 <svg width="20" height="20" viewBox="0 0 24 24" style="margin-right: 10px">
-                    <path fill="currentColor" d="M21.35 11.1h-9.17v2.98h5.24c-.27 1.67-1.65 4.54-5.24 4.54-3.15 0-5.73-2.55-5.73-5.73s2.55-5.73 5.73-5.73c1.38 0 2.62.5 3.58 1.45l2.4-2.4c-1.63-1.54-3.75-2.47-5.98-2.47-4.96 0-9 4.04-9 9s4.04 9 9 9c5.21 0 8.66-3.66 8.66-8.8 0-.68-.07-1.35-.15-1.99z" />
+                    <path fill="currentColor"
+                        d="M21.35 11.1h-9.17v2.98h5.24c-.27 1.67-1.65 4.54-5.24 4.54-3.15 0-5.73-2.55-5.73-5.73s2.55-5.73 5.73-5.73c1.38 0 2.62.5 3.58 1.45l2.4-2.4c-1.63-1.54-3.75-2.47-5.98-2.47-4.96 0-9 4.04-9 9s4.04 9 9 9c5.21 0 8.66-3.66 8.66-8.8 0-.68-.07-1.35-.15-1.99z" />
                 </svg>
                 Sign in with Google
             </button>
@@ -222,24 +463,31 @@
         </div>
 
         <div id="eventsPage" style="display: none;">
-            
+
             <div id="eventListView">
                 <div class="expense-form" style="border-left: 5px solid #e17055;">
                     <h3 style="color: #d35400; margin-bottom: 15px;">New Event / Trip</h3>
-                    <div class="form-group"><input type="text" id="newEventName" placeholder="Event Name (e.g. Sajek Tour)"></div>
-                    <div class="form-group"><input type="number" id="newEventBudget" placeholder="Initial Budget (Optional)"></div>
-                    <button class="add-btn" onclick="createNewEvent()" style="background: #e17055;">Create Event</button>
+                    <div class="form-group"><input type="text" id="newEventName"
+                            placeholder="Event Name (e.g. Sajek Tour)"></div>
+                    <div class="form-group"><input type="number" id="newEventBudget"
+                            placeholder="Initial Budget (Optional)"></div>
+                    <button class="add-btn" onclick="createNewEvent()" style="background: #e17055;">Create
+                        Event</button>
                 </div>
                 <h3 style="margin: 20px 0;">Active Events</h3>
                 <div id="activeEventsList" class="wishlist-grid"></div>
-                
+
                 <h3 style="margin: 20px 0; color: #aaa;">Completed History</h3>
-                <div id="completedEventsList" class="expenses-list"></div>
+                <div id="completedEventsList" class="wishlist-grid"></div>
             </div>
 
             <div id="eventDetailView" style="display: none;">
-                <button onclick="closeEventView()" class="btn-small" style="background: #aaa; margin-bottom: 15px;">← Back to List</button>
-                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <button onclick="closeEventView()" class="btn-small" style="background: #aaa;">← Back to
+                        List</button>
+                    <button onclick="generateEventPDF()" class="btn-small btn-action">Download Event PDF</button>
+                </div>
+
                 <div class="budget-section" style="background: linear-gradient(135deg, #e17055 0%, #fab1a0 100%);">
                     <h2 id="currentEventTitle">Event Name</h2>
                     <div class="budget-grid">
@@ -252,20 +500,25 @@
                             <p id="eventSpent">৳0</p>
                         </div>
                     </div>
-                    <button onclick="completeEvent()" class="btn-small" style="background: white; color: #d35400; margin-top: 10px; font-weight: bold; padding: 10px 20px;">✓ Complete & Merge</button>
+                    <button id="btnCompleteEvent" onclick="completeEvent()" class="btn-small"
+                        style="background: white; color: #d35400; margin-top: 10px; font-weight: bold; padding: 10px 20px;">✓
+                        Complete & Merge</button>
                 </div>
 
                 <div class="expense-form">
                     <h4>Add Event Transaction</h4>
                     <div class="nav-buttons" style="margin: 10px 0; justify-content: start;">
-                        <button onclick="setEventType('income')" id="btnEvIncome" class="btn-small" style="background: #00b894;">Add Money</button>
-                        <button onclick="setEventType('expense')" id="btnEvExpense" class="btn-small" style="background: #d63031; opacity: 0.5;">Expense</button>
+                        <button onclick="setEventType('income')" id="btnEvIncome" class="btn-small"
+                            style="background: #00b894;">Add Money</button>
+                        <button onclick="setEventType('expense')" id="btnEvExpense" class="btn-small"
+                            style="background: #d63031; opacity: 0.5;">Expense</button>
                     </div>
                     <input type="hidden" id="eventTypeInput" value="income">
-                    
+
                     <div class="form-group"><input type="text" id="eventTransDesc" placeholder="Description"></div>
                     <div class="form-group"><input type="number" id="eventTransAmount" placeholder="Amount"></div>
-                    <button class="add-btn" onclick="addEventTransaction()" style="background: #333;">Add to Event</button>
+                    <button class="add-btn" onclick="addEventTransaction()" style="background: #333;">Add to
+                        Event</button>
                 </div>
 
                 <div class="expenses-list">
@@ -275,8 +528,10 @@
         </div>
 
         <div id="historyPage" style="display: none;">
-            <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; display: flex; justify-content: space-between;">
-                <input type="month" id="monthSelector" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            <div
+                style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; display: flex; justify-content: space-between;">
+                <input type="month" id="monthSelector"
+                    style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
                 <button onclick="generatePDF()" class="btn-small btn-action">Download PDF</button>
             </div>
             <div class="expenses-list">
@@ -308,7 +563,8 @@
                     </select></div>
                 <div class="form-group"><input type="text" id="personName" placeholder="Person Name"></div>
                 <div class="form-group"><input type="number" id="borrowLendAmount" placeholder="Amount"></div>
-                <button class="add-btn" onclick="addBorrowLend()" style="background: linear-gradient(135deg, #e17055 0%, #d35400 100%);">Add Transaction</button>
+                <button class="add-btn" onclick="addBorrowLend()"
+                    style="background: linear-gradient(135deg, #e17055 0%, #d35400 100%);">Add Transaction</button>
             </div>
             <div class="expenses-list">
                 <h2 style="color: #e17055; border-left: 5px solid #e17055; padding-left: 10px;">Borrowed (Repay)</h2>
@@ -376,10 +632,12 @@
         function startDataSync(uid) {
             onSnapshot(doc(db, "users", uid), (docSnap) => {
                 if (docSnap.exists()) {
-                    userData = { ...userData, ...docSnap.data() }; // Merge to ensure new fields exist
-                    if (!userData.events) userData.events = []; // Ensure events array exists
+                    userData = { ...userData, ...docSnap.data() };
+                    if (!userData.events) userData.events = [];
                     renderAll();
-                    if(document.getElementById('eventsPage').style.display === 'block') renderEvents();
+                    if (document.getElementById('eventsPage').style.display === 'block') renderEvents();
+                    // If detailed view is open, refresh it too
+                    if (currentEventId && document.getElementById('eventDetailView').style.display === 'block') renderEventDetails();
                 } else saveToCloud();
             });
         }
@@ -408,7 +666,7 @@
             document.getElementById('transactionAmount').value = '';
         };
 
-        // --- EVENT / TOUR LOGIC (NEW) ---
+        // --- EVENT / TOUR LOGIC ---
         let currentEventId = null;
         let eventTransType = 'income';
 
@@ -444,25 +702,21 @@
             const active = userData.events.filter(e => e.status === 'active');
             const completed = userData.events.filter(e => e.status === 'completed');
 
-            document.getElementById('activeEventsList').innerHTML = active.map(e => {
+            const eventCard = (e, color) => {
                 const inc = e.transactions.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
                 const exp = e.transactions.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0);
                 return `
-                <div class="wishlist-card" onclick="openEventView(${e.id})" style="cursor:pointer; border-left: 5px solid #e17055;">
+                <div class="wishlist-card" onclick="openEventView(${e.id})" style="cursor:pointer; border-left: 5px solid ${color};">
                     <div class="wishlist-content">
                         <h3>${e.name}</h3>
                         <p>Balance: ৳${inc - exp}</p>
-                        <small style="color:#666">Click to open</small>
+                        <small style="color:#666">${e.status === 'completed' ? 'Completed (Click to view)' : 'Active (Click to open)'}</small>
                     </div>
                 </div>`;
-            }).join('');
+            };
 
-            document.getElementById('completedEventsList').innerHTML = completed.map(e => `
-                <div class="expense-item" style="opacity: 0.7;">
-                    <div><strong>${e.name}</strong> <span class="badge badge-paid">DONE</span></div>
-                    <button class="btn-small btn-delete" onclick="deleteItem('event', ${e.id})">Del</button>
-                </div>
-            `).join('');
+            document.getElementById('activeEventsList').innerHTML = active.map(e => eventCard(e, '#e17055')).join('');
+            document.getElementById('completedEventsList').innerHTML = completed.map(e => eventCard(e, '#00b894')).join('');
         };
 
         window.openEventView = (id) => {
@@ -505,24 +759,41 @@
             renderEventDetails();
         };
 
+        // NEW: Delete a transaction inside an event
+        window.deleteEventTransaction = (eventId, transId) => {
+            const event = userData.events.find(e => e.id === eventId);
+            if (event) {
+                event.transactions = event.transactions.filter(t => t.id !== transId);
+                saveToCloud();
+                renderEventDetails();
+            }
+        };
+
         window.renderEventDetails = () => {
             const event = userData.events.find(e => e.id === currentEventId);
             if (!event) return closeEventView();
 
-            document.getElementById('currentEventTitle').textContent = event.name;
+            document.getElementById('currentEventTitle').textContent = event.name + (event.status === 'completed' ? ' (Closed)' : '');
+
             const inc = event.transactions.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
             const exp = event.transactions.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0);
 
             document.getElementById('eventBalance').textContent = `৳${inc - exp}`;
             document.getElementById('eventSpent').textContent = `৳${exp}`;
 
+            // Hide "Complete" button if already completed
+            document.getElementById('btnCompleteEvent').style.display = event.status === 'completed' ? 'none' : 'block';
+
             document.getElementById('eventTransList').innerHTML = event.transactions
                 .sort((a, b) => b.id - a.id)
                 .map(t => `
                     <div class="expense-item">
                         <div>${t.desc} <small>(${t.date})</small></div>
-                        <div style="color: ${t.type === 'income' ? '#00b894' : '#d63031'}">
-                            ${t.type === 'income' ? '+' : '-'}৳${t.amount}
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <span style="color: ${t.type === 'income' ? '#00b894' : '#d63031'}; font-weight:bold;">
+                                ${t.type === 'income' ? '+' : '-'}৳${t.amount}
+                            </span>
+                            <button class="btn-small btn-delete" onclick="deleteEventTransaction(${event.id}, ${t.id})">Del</button>
                         </div>
                     </div>
                 `).join('');
@@ -548,7 +819,44 @@
             }
             event.status = 'completed';
             saveToCloud();
-            closeEventView();
+            renderEventDetails(); // Re-render to hide complete button
+        };
+
+        // NEW: Generate PDF for specific event
+        window.generateEventPDF = () => {
+            const event = userData.events.find(e => e.id === currentEventId);
+            if (!event) return;
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            let y = 20;
+            doc.setFontSize(16);
+            doc.text(`Event Report: ${event.name}`, 105, y, { align: 'center' });
+            y += 15;
+
+            doc.setFontSize(12);
+            doc.text(`Status: ${event.status.toUpperCase()}`, 20, y); y += 10;
+
+            const inc = event.transactions.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
+            const exp = event.transactions.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0);
+
+            doc.text(`Total Budget/Add: ${inc}`, 20, y); y += 10;
+            doc.text(`Total Spent: ${exp}`, 20, y); y += 10;
+            doc.text(`Remaining Balance: ${inc - exp}`, 20, y); y += 20;
+
+            doc.setFontSize(14);
+            doc.text("Transaction History:", 20, y); y += 10;
+
+            doc.setFontSize(10);
+            event.transactions.forEach(t => {
+                const prefix = t.type === 'income' ? '+' : '-';
+                doc.text(`${t.date} | ${t.desc} | ${prefix}${t.amount}`, 20, y);
+                y += 7;
+                if (y > 280) { doc.addPage(); y = 20; }
+            });
+
+            doc.save(`${event.name}_Report.pdf`);
         };
 
         // --- BORROW/LEND LOGIC ---
@@ -561,8 +869,7 @@
 
             const item = { id: Date.now(), date, type, person, amount, paid: false };
             userData.borrowLend.push(item);
-            
-            // Auto update balance
+
             if (type === 'borrowed') {
                 userData.moneyReceived.push({ id: Date.now() + 1, date, source: `Loan from ${person}`, amount });
                 userData.budget += amount;
@@ -599,9 +906,9 @@
             if (type === 'borrow') userData.borrowLend = userData.borrowLend.filter(x => x.id !== id);
             if (type === 'wish') userData.wishlistItems = userData.wishlistItems.filter(x => x.id !== id);
             if (type === 'event') userData.events = userData.events.filter(x => x.id !== id);
-            
+
             saveToCloud();
-            if(document.getElementById('eventsPage').style.display === 'block') renderEvents();
+            if (document.getElementById('eventsPage').style.display === 'block') renderEvents();
         };
 
         window.addToWishlist = () => {
@@ -642,13 +949,13 @@
             document.getElementById('dashboardDebtBox').style.display = debt > 0 ? 'block' : 'none';
             document.getElementById('dashboardDebt').textContent = `৳${debt.toFixed(2)}`;
 
-            document.getElementById('moneyList').innerHTML = userData.moneyReceived.length ? userData.moneyReceived.sort((a,b)=>new Date(b.date)-new Date(a.date)).map(i => htmlItem(i.date, i.source, `+${i.amount}`, '#00b894', `deleteItem('money', ${i.id})`)).join('') : '<div style="text-align:center;color:#ccc">No records</div>';
-            
-            document.getElementById('expensesList').innerHTML = userData.expenses.length ? userData.expenses.sort((a,b)=>new Date(b.date)-new Date(a.date)).map(i => htmlItem(i.date, i.desc, `-${i.amount}`, '#d63031', `deleteItem('expense', ${i.id})`)).join('') : '<div style="text-align:center;color:#ccc">No records</div>';
+            document.getElementById('moneyList').innerHTML = userData.moneyReceived.length ? userData.moneyReceived.sort((a, b) => new Date(b.date) - new Date(a.date)).map(i => htmlItem(i.date, i.source, `+${i.amount}`, '#00b894', `deleteItem('money', ${i.id})`)).join('') : '<div style="text-align:center;color:#ccc">No records</div>';
+
+            document.getElementById('expensesList').innerHTML = userData.expenses.length ? userData.expenses.sort((a, b) => new Date(b.date) - new Date(a.date)).map(i => htmlItem(i.date, i.desc, `-${i.amount}`, '#d63031', `deleteItem('expense', ${i.id})`)).join('') : '<div style="text-align:center;color:#ccc">No records</div>';
 
             const borrowed = userData.borrowLend.filter(b => b.type === 'borrowed');
             document.getElementById('borrowedList').innerHTML = borrowed.length ? borrowed.map(i => htmlBL(i, '#e74c3c')).join('') : '<div style="text-align:center;color:#ccc">No records</div>';
-            
+
             const lent = userData.borrowLend.filter(b => b.type === 'lent');
             document.getElementById('lentList').innerHTML = lent.length ? lent.map(i => htmlBL(i, '#0984e3')).join('') : '<div style="text-align:center;color:#ccc">No records</div>';
 
@@ -696,7 +1003,7 @@
             if (!document.getElementById('monthSelector').value)
                 document.getElementById('monthSelector').value = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
         }
-        
+
         window.generatePDF = () => {
             const { jsPDF } = window.jspdf; const doc = new jsPDF();
             const month = document.getElementById('monthSelector').value;
@@ -715,4 +1022,5 @@
         document.getElementById('mainDate').value = new Date().toISOString().split('T')[0];
     </script>
 </body>
+
 </html>
